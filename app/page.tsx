@@ -46,11 +46,11 @@ export default function Portfolio() {
   ]
 
   useEffect(() => {
-      if (numbersClicks > 5) {
-        router.push(`/login`);
-        setNumbersClicks(0)
-      }
-  },[numbersClicks])
+    if (numbersClicks > 5) {
+      router.push(`/login`);
+      setNumbersClicks(0)
+    }
+  }, [numbersClicks])
 
   return (
     <div className="flex min-h-screen flex-col ">
@@ -96,9 +96,9 @@ export default function Portfolio() {
         <section className="py-20 md:py-28 ">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-4">
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Desenvolvedor</h1>
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Redes de Computadores | Desenvolvedor</h1>
               <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                Eu crio aplicativos web acessíveis, responsivos e de alto desempenho com tecnologias modernas.
+                Estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 <Button asChild>
@@ -220,7 +220,7 @@ export default function Portfolio() {
       </main>
       <footer className=" py-6 md:py-8">
         <div className="container flex flex-col items-center justify-center gap-4 text-center" onClick={() => setNumbersClicks(numbersClicks + 1)}>
-          
+
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Cauê de Andrade. Todos os direitos reservados.</p>
         </div>
       </footer>

@@ -20,13 +20,15 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden bg-black text-white">
-      <div className="aspect-video relative overflow-hidden">
-        <img
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          className="object-cover w-full h-full transition-transform hover:scale-105 duration-300"
-        />
-      </div>
+      <Link href={project.link} target="_blank" rel="noopener noreferrer">
+        <div className="aspect-video relative overflow-hidden">
+          <img
+            src={project.image || "/placeholder.svg"}
+            alt={project.title}
+            className="object-cover w-full h-full transition-transform hover:scale-105 duration-300"
+          />
+        </div>
+      </Link>
       <CardHeader>
         <CardTitle>{project.title}</CardTitle>
       </CardHeader>

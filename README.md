@@ -21,4 +21,4 @@ Este repositório contém o código-fonte do meu portfólio, desenvolvido com **
 
 > O objetivo é manter um portfólio atualizado e funcional, além de praticar boas práticas de desenvolvimento e UI/UX.
 
-📎 [Link para o site]([https://seusite.com](https://portifolio-iota-black.vercel.app/))
+📎 [Link para o site]([https://portifolio-iota-black.vercel.app/])

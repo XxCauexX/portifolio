@@ -97,7 +97,7 @@ export default function Portfolio() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-4">
               <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Desenvolvedor</h1>
-              <p className="max-w-[700px] text-muted-foreground md:text-xl text-slate-300">
+              <p className="max-w-[700px] text-muted-foreground md:text-xl">
                 Eu crio aplicativos web acessíveis, responsivos e de alto desempenho com tecnologias modernas.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
@@ -131,12 +131,12 @@ export default function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mim</h2>
-                <p className="text-muted-foreground mb-4 text-slate-300">
+                <p className="text-muted-foreground mb-4 ">
                   Sou um estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia. Meu primeiro contato com programação foi durante o curso técnico em Desenvolvimento de Sistemas na Etec Uirapuru, onde desenvolvi projetos desafiadores, como um sistema de Reconhecimento Facial para controle de acesso e um estadiômetro com armazenamento em banco de dados, apresentado na USP.
                   Atualmente, trabalho na área de qualidade da Promaflex, onde estou desenvolvendo um sistema de gerenciamento da qualidade utilizando React TSX e Node.js, integrando tecnologia ao controle de processos. Além disso, tenho experiência prática com diversas linguagens, como JavaScript, Python, SQL e Java.
                   Gosto de resolver problemas, aprender coisas novas e colaborar com pessoas que compartilham o mesmo interesse por tecnologia. No meu tempo livre, participo de eventos e projetos voluntários, como o Maker Space IoT na Etec Uirapuru e o apoio à ONG HABITACITY.
                 </p>
-                <p className="text-muted-foreground mb-4 text-slate-300">
+                <p className="text-muted-foreground mb-4 ">
                   Este portfólio é um espaço onde compartilho meus projetos e aprendizados. Fique à vontade para explorar e entrar em contato!
                 </p>
                 <div className="flex flex-wrap gap-2 mt-6">

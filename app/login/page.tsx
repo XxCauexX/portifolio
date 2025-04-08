@@ -1,7 +1,11 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from "next/navigation";
+const user = { name: 'caue', password: '123456' };
+
 
 const LoginPage: React.FC = () => {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -9,11 +13,17 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Password:', password);
+        if (password === user.password && email === user.name) {
+            router.push('/admin');
+            alert('Login successful!');
+        } else {
+            alert('Invalid password!');
+        }
         // Add your login logic here
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }}>
             <form
                 onSubmit={handleSubmit}
                 style={{
@@ -31,7 +41,7 @@ const LoginPage: React.FC = () => {
                     Email:
                 </label>
                 <input
-                    type="email"
+                    type="text"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -40,6 +50,7 @@ const LoginPage: React.FC = () => {
                         marginBottom: '16px',
                         border: '1px solid #ccc',
                         borderRadius: '4px',
+                        color: 'black'
                     }}
                     required
                 />
@@ -56,6 +67,7 @@ const LoginPage: React.FC = () => {
                         marginBottom: '16px',
                         border: '1px solid #ccc',
                         borderRadius: '4px',
+                        color: 'black'
                     }}
                     required
                 />

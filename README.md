@@ -19,6 +19,6 @@ Este repositório contém o código-fonte do meu portfólio, desenvolvido com **
 - Next.js (TypeScript)
 - Firebase (Authentication + Firestore)
 
-> O objetivo é manter um portfólio atualizado e funcional, além de praticar boas práticas de desenvolvimento e UI/UX.
+> O objetivo é manter um portfólio atualizado e funcional, além de praticar boas práticas de desenvolvimento.
 
 📎 [Link para o site]([https://portifolio-iota-black.vercel.app/])

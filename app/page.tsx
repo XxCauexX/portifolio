@@ -143,12 +143,13 @@ export default function Portfolio() {
                   {[
                     "JavaScript",
                     "TypeScript",
+                    "Node.js",
                     "React",
                     "Next.js",
-                    "Node.js",
-                    "MongoDB",
-                    "PostgreSQL",
                     "Tailwind CSS",
+                    "Python",
+                    "MySQL",
+                    "Git/GitHub",
                   ].map((skill) => (
                     <span
                       key={skill}

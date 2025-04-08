@@ -19,7 +19,7 @@ export default function Portfolio() {
       image: "/miniatura.png",
       link: "https://projeto-wise-advice.vercel.app/",
     },
-    {
+    /* {
       id: 2,
       title: "Task Management App",
       description: "A productivity application for managing tasks and projects with team collaboration features.",
@@ -42,7 +42,7 @@ export default function Portfolio() {
       tags: ["HTML/CSS", "JavaScript", "Responsive Design"],
       image: "/placeholder.svg?height=300&width=400",
       link: "#",
-    },
+    }, */
   ]
 
   useEffect(() => {
@@ -197,7 +197,7 @@ export default function Portfolio() {
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center p-6 bg-muted rounded-lg hover:bg-white hover:text-gray-800 bg-gray-800 transition-colors "
+                  className="flex flex-col items-center p-6 rounded-lg hover:bg-white hover:text-gray-800 bg-gray-800 transition-colors "
                 >
                   <Github className="h-10 w-10 mb-4 " />
                   <h3 className="text-lg font-medium">GitHub</h3>
@@ -207,7 +207,7 @@ export default function Portfolio() {
                   href="https://www.linkedin.com/in/cau%C3%AA-andrade-dantas-da-silva-74961b215/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center animate-pulse p-6 bg-muted rounded-lg hover:bg-white hover:text-blue-800 bg-blue-800 transition-colors"
+                  className="flex flex-col items-center animate-pulse p-6 rounded-lg hover:bg-white hover:text-blue-800 bg-blue-800 transition-colors"
                 >
                   <Linkedin className="h-10 w-10 mb-4" />
                   <h3 className="text-lg font-medium">LinkedIn</h3>

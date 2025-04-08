@@ -19,7 +19,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden bg-black text-white">
       <div className="aspect-video relative overflow-hidden">
         <img
           src={project.image || "/placeholder.svg"}
@@ -30,9 +30,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <CardHeader>
         <CardTitle>{project.title}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="">
         <p className="text-muted-foreground">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4 text-black">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" size="sm" className="w-full" asChild>
+        <Button variant="outline" size="sm" className="w-full bg-black text-white" asChild>
           <Link href={project.link} className="flex items-center gap-2" target="_blank" rel="noopener noreferrer">
             Ver Projeto <ExternalLink className="h-4 w-4" />
           </Link>

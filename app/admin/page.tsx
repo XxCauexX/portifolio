@@ -25,11 +25,11 @@ const admPainel: React.FC = () => {
     };
 
     return (
-        <div className=' flex flex-col items-center '>
+        <div className=' flex flex-col items-center h-screen'>
             <div className='py-4 pl-8 text-base bg-black w-full h-max '>
-                <h1>Painel de Administração</h1>
+                <h1 className='sm:text-2xl'>Painel de Administração</h1>
             </div>
-            <div className='w-full h-[88.5vh] text-black mt-8 grid grid-cols-1 gap-2 sm:grid-cols-3 grid-r items-center justify-items-center'>
+            <div className='w-full h-full text-black mt-8 grid grid-cols-1 gap-2 sm:grid-cols-3 grid-r items-center justify-items-center'>
                 <Card className='bg-black shadow-2xl border-none shadow-purple-700 group ' >
                     <CardHeader>
                         <CardTitle className='flex text-white'>

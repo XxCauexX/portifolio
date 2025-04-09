@@ -16,7 +16,7 @@ export default function Portfolio() {
       title: "Wise Advice",
       description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
       tags: ["React"],
-      image: "/miniatura.png",
+      image: "/image.png",
       link: "https://projeto-wise-advice.vercel.app/",
     },
     /* {

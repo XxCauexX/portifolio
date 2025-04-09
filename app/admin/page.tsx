@@ -11,6 +11,7 @@ import {
 
 import { FolderOpenIcon, CirclePlusIcon, FilePenLineIcon, SettingsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const admPainel: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -38,10 +39,15 @@ const admPainel: React.FC = () => {
                         <CardDescription>Gerencie seus projetos de portifolio</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Button className='w-80'>Ver todos os projetos</Button>
+
+                        <Link href='/admin/projetos'>
+                            <Button className='w-80'>Ver todos os projetos</Button>
+                        </Link>
                     </CardContent>
                     <CardFooter>
-                        <Button className='w-80' variant={'outline'}> <CirclePlusIcon /> Adicionar novos projetos</Button>
+                        <Link href='/admin/projetos/novo'>
+                            <Button className='w-80' variant={'outline'}> <CirclePlusIcon /> Adicionar novos projetos</Button>
+                        </Link>
                     </CardFooter>
                 </Card>
                 <Card className='bg-black shadow-2xl border-none shadow-purple-700 group'>
@@ -61,7 +67,7 @@ const admPainel: React.FC = () => {
                 <Card className='bg-black shadow-2xl border-none shadow-purple-700 group' >
                     <CardHeader>
                         <CardTitle className='flex text-white '>
-                            <SettingsIcon className='mr-4 group-hover:animate-bounce transition-all duration-300' /> <p>Configurações</p>
+                            <SettingsIcon className='mr-4 group-hover:animate-spin transition-all duration-300' /> <p>Configurações</p>
                         </CardTitle>
                         <CardDescription>Gerencie as configurações do site</CardDescription>
                     </CardHeader>

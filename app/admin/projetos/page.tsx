@@ -24,7 +24,16 @@ const projects: React.FC = () => {
         // Add your login logic here
     };
 
-    const projetos = [{
+    type Projeto = {
+        id: number,
+        title: string,
+        description: string,
+        tags: [],
+        image:string,
+        link: string
+    }
+
+    const projetos:Projeto[] = [ {
         id: 1,
         title: "Wise Advice",
         description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
@@ -38,7 +47,7 @@ const projects: React.FC = () => {
         tags: ["Next.js", "TypeScript", "Prisma"],
         image: "/placeholder.svg?height=300&width=400",
         link: "#",
-    },
+    },/*
     {
         id: 3,
         title: "Weather Dashboard",
@@ -94,7 +103,7 @@ const projects: React.FC = () => {
         tags: ["HTML/CSS", "JavaScript", "Responsive Design"],
         image: "/placeholder.svg?height=300&width=400",
         link: "#",
-    }]
+    } */]
 
     return (
         <div className='w-full h-screen'>
@@ -115,7 +124,7 @@ const projects: React.FC = () => {
             </div>
             <div className=''>
                 {
-                    projetos.length > 0 ? projetos.map((projeto) =>
+                    projetos.length > 0 ? projetos?.map((projeto) =>
                         <Card key={projeto.id} className='bg-black m-4'>
                             <CardHeader>
                                 <CardTitle className='flex text-white'>
@@ -138,7 +147,7 @@ const projects: React.FC = () => {
                     )
                         :
                         <div>
-                            cade
+                           <h1 className='text-2xl'>Nenhum projeto encontrado</h1>
                         </div>
                 }
             </div>

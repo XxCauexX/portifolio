@@ -23,7 +23,7 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }} className=''>
             <form
                 onSubmit={handleSubmit}
                 style={{
@@ -35,6 +35,7 @@ const LoginPage: React.FC = () => {
                     borderRadius: '8px',
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                 }}
+                className='  bg-gradient-to-l from-purple-950 to-black'
             >
                 <h2 style={{ textAlign: 'center' }}>Login</h2>
                 <label htmlFor="email" style={{ marginBottom: '8px' }}>

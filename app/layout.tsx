@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Portifolio - Cauê de Andrade",
-  description: "Personal portfolio showcasing my projects and skills",
+  description: "",
 }
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className}   bg-gradient-to-l from-purple-950 to-black text-white`}>
+      <body className={`${inter.className} bg-[url(/imgbg.png)] text-white`}> {/*   bg-gradient-to-l from-purple-950 to-black */}
         {children}
         <Analytics />
       </body>

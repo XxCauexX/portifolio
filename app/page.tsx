@@ -92,8 +92,8 @@ export default function Portfolio() {
           </div>
         </div>
       </header>
-      <main className="flex-1">
-        <section className="py-20 md:py-28 ">
+      <main className="flex-1 bg-cover bg-center">
+        <section className="py-20 md:py-28  ">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-4">
               <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Redes de Computadores | Desenvolvedor</h1>
@@ -112,7 +112,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="projects" className="py-12 md:py-16">
+        <section id="projects" className="py-12 md:py-16 ">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Projetos</h2>
@@ -126,7 +126,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="about" className="py-12 md:py-16 bg-muted/50 bg-gradient-to-l from-purple-950 to-black ">
+        <section id="about" className="py-12 md:py-16 ">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>

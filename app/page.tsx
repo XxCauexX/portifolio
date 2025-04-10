@@ -111,8 +111,14 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        <section id="projects" className="py-12 md:py-16 ">
+        <svg
+          className="w-full h-[100px] rotate-180"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+        >
+          <path fill="#3b0764" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
+        </svg>
+        <section id="projects" className="py-12 md:py-16 bg-gradient-to-b from-purple-950 to-black">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Projetos</h2>
@@ -126,9 +132,9 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="about" className="py-12 md:py-16 ">
+        <section id="about" className="py-12 md:py-16 bg-black">
           <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center ">
               <div>
                 <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mim</h2>
                 <p className="text-muted-foreground mb-4 ">
@@ -174,7 +180,13 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
+        <svg
+          className="w-full h-[100px] "
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+        >
+          <path fill="black" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
+        </svg>
         <section id="contact" className="py-12 md:py-16">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
@@ -219,7 +231,7 @@ export default function Portfolio() {
           </div>
         </section>
       </main>
-      <footer className=" py-6 md:py-8">
+      <footer className=" py-6 md:py-8 bg-black">
         <div className="container flex flex-col items-center justify-center gap-4 text-center" onClick={() => setNumbersClicks(numbersClicks + 1)}>
 
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Cauê de Andrade. Todos os direitos reservados.</p>

@@ -26,15 +26,15 @@ export default function Portfolio() {
       image: "/image.png",
       link: "https://projeto-wise-advice.vercel.app/",
     },
-    /* {
-      id: 2,
-      title: "Task Management App",
-      description: "A productivity application for managing tasks and projects with team collaboration features.",
-      tags: ["Next.js", "TypeScript", "Prisma"],
-      image: "/placeholder.svg?height=300&width=400",
-      link: "#",
-    },
     {
+      id: 2,
+      title: "Cracha de apresentação",
+      description: "Cracha de apresentação consumindo dados da api do GitHub",
+      tags: ["HTML", "CSS", "JS"],
+      image: "/crachaBanner.png",
+      link: "https://projeto-cracha17-08-2022-gvgaypnd3-caue-s-projects.vercel.app/",
+    },
+    /* {
       id: 3,
       title: "Weather Dashboard",
       description: "Real-time weather information with interactive maps and forecasting.",
@@ -120,13 +120,13 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-        <svg
-          className="w-full h-[100px] rotate-180"
-          viewBox="0 0 1440 100"
-          preserveAspectRatio="none"
-        >
-          <path fill="#3b0764" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
-        </svg>
+          <svg
+            className="w-full h-[100px] rotate-180"
+            viewBox="0 0 1440 100"
+            preserveAspectRatio="none"
+          >
+            <path fill="#3b0764" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
+          </svg>
         </div>
         <section id="projects" className="py-12  md:py-16 bg-gradient-to-b from-purple-950 to-black">
           <ParticlesSection style={{
@@ -198,7 +198,7 @@ export default function Portfolio() {
           </div>
         </section>
         <section id="contact" className="py-12 md:py-16  bg-[url(/imgbg.png)] relative z-10 bg-contain sm:bg-auto">
-        
+
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Entre em contato</h2>
@@ -244,7 +244,6 @@ export default function Portfolio() {
       </main>
       <footer className=" py-6 md:py-8 bg-black">
         <div className="container flex flex-col items-center justify-center gap-4 text-center" onClick={() => setNumbersClicks(numbersClicks + 1)}>
-
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Cauê de Andrade. Todos os direitos reservados.</p>
         </div>
       </footer>

@@ -2,12 +2,19 @@
 import { useRouter } from "next/navigation";
 import { Github, Mail, Linkedin } from "lucide-react"
 import Link from "next/link"
-
+import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button"
 import ProjectCard from "../project-card"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import ParticlesSection from "../components/ParticlesComponent/ParticlesComponent";
+
+const ParticlesComponent = dynamic(
+  () => import('../components/ParticlesComponent/ParticlesComponent'),
+  { ssr: false }
+);
 
 export default function Portfolio() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [numbersClicks, setNumbersClicks] = useState(0)
   const projects = [
@@ -54,7 +61,7 @@ export default function Portfolio() {
 
   return (
     <div className="flex min-h-screen flex-col ">
-      <header className="sticky top-0 z-10  bg-background/95 backdrop-blur bg-black ">
+      <header className="sticky top-0 z-50  bg-background/95 backdrop-blur bg-black ">
         <div className="container flex h-16 items-center justify-between">
           <div className="font-bold text-xl">
             <Link href="/">Cauê de Andrde</Link>
@@ -93,24 +100,26 @@ export default function Portfolio() {
         </div>
       </header>
       <main className="flex-1 bg-cover bg-center">
-        <section className="py-20 md:py-28  ">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center text-center space-y-4">
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Redes de Computadores | Desenvolvedor</h1>
-              <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                Estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <Button asChild>
-                  <Link href="#projects">Projetos</Link>
-                </Button>
-                <Button variant="outline" className="text-black hover:bg-black hover:text-white" asChild>
-                  <Link href="#contact">Entre em contato</Link>
-                </Button>
+        <div className="bg-[url(/imgbg.png)] bg-contain sm:bg-auto relative z-10">
+
+          <section className="py-20 md:py-28">
+            <div className="container px-4 md:px-6">
+              <div className="flex flex-col items-center text-center space-y-4">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Redes de Computadores | Desenvolvedor</h1>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                  Estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                  <Button asChild>
+                    <Link href="#projects">Projetos</Link>
+                  </Button>
+                  <Button variant="outline" className="text-black hover:bg-black hover:text-white" asChild>
+                    <Link href="#contact">Entre em contato</Link>
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
         <svg
           className="w-full h-[100px] rotate-180"
           viewBox="0 0 1440 100"
@@ -118,8 +127,17 @@ export default function Portfolio() {
         >
           <path fill="#3b0764" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
         </svg>
-        <section id="projects" className="py-12 md:py-16 bg-gradient-to-b from-purple-950 to-black">
-          <div className="container px-4 md:px-6">
+        </div>
+        <section id="projects" className="py-12  md:py-16 bg-gradient-to-b from-purple-950 to-black">
+          <ParticlesSection style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 0 // garante que fique atrás dos outros elementos
+          }} />
+          <div className="container px-4 md:px-6 relative z-20">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Projetos</h2>
               <p className="text-muted-foreground md:text-lg">Alguns dos meus projetos.</p> {/*A  collection of my recent work and personal projects */}
@@ -131,8 +149,7 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        <section id="about" className="py-12 md:py-16 bg-black">
+        <section ref={sectionRef} id="about" className="py-12 md:py-16 bg-black">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center ">
               <div>
@@ -180,14 +197,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-        <svg
-          className="w-full h-[100px] "
-          viewBox="0 0 1440 100"
-          preserveAspectRatio="none"
-        >
-          <path fill="black" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
-        </svg>
-        <section id="contact" className="py-12 md:py-16">
+        <section id="contact" className="py-12 md:py-16  bg-[url(/imgbg.png)] relative z-10 bg-contain sm:bg-auto">
+        
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Entre em contato</h2>
@@ -237,7 +248,7 @@ export default function Portfolio() {
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Cauê de Andrade. Todos os direitos reservados.</p>
         </div>
       </footer>
-    </div>
+    </div >
   )
 }
 

@@ -106,7 +106,7 @@ export default function Portfolio() {
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-center text-center space-y-4">
                 <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Redes de Computadores | Desenvolvedor</h1>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                <p className="max-w-[700px] text-purple-300 md:text-xl">
                   Estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 mt-6">
@@ -140,7 +140,7 @@ export default function Portfolio() {
           <div className="container px-4 md:px-6 relative z-20">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Projetos</h2>
-              <p className="text-muted-foreground md:text-lg">Alguns dos meus projetos.</p> {/*A  collection of my recent work and personal projects */}
+              <p className="text-purple-300 md:text-lg">Alguns dos meus projetos.</p> {/*A  collection of my recent work and personal projects */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
@@ -149,12 +149,12 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-        <section ref={sectionRef} id="about" className="py-12 md:py-16 bg-black">
+        <section ref={sectionRef} id="about" className="py-12 md:py-16 bg-black ">
           <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
               <div>
                 <h2 className="text-3xl font-bold tracking-tighter mb-4">Sobre mim</h2>
-                <p className="text-muted-foreground mb-4 ">
+                <p className="text-muted-foreground mb-4  ">
                   Sou um estudante de Redes de Computadores na Fatec Osasco e desenvolvedor apaixonado por tecnologia. Meu primeiro contato com programação foi durante o curso técnico em Desenvolvimento de Sistemas na Etec Uirapuru, onde desenvolvi projetos desafiadores, como um sistema de Reconhecimento Facial para controle de acesso e um estadiômetro com armazenamento em banco de dados, apresentado na USP.
                   Atualmente, trabalho na área de qualidade da Promaflex, onde estou desenvolvendo um sistema de gerenciamento da qualidade utilizando React TSX e Node.js, integrando tecnologia ao controle de processos. Além disso, tenho experiência prática com diversas linguagens, como JavaScript, Python, SQL e Java.
                   Gosto de resolver problemas, aprender coisas novas e colaborar com pessoas que compartilham o mesmo interesse por tecnologia. No meu tempo livre, participo de eventos e projetos voluntários, como o Maker Space IoT na Etec Uirapuru e o apoio à ONG HABITACITY.
@@ -184,7 +184,8 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="flex justify-center ">
-                <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-black border-background  ">
+                <div className="relative w-64 h-64 rounded-full overflow-hidden ">
+                  <div className="absolute inset-0 rounded-full border-4 border-l-black border-background animate-spin z-0" style={{ animationDuration: '2000ms' }} />
                   <img
                     src="/perfil.jpeg"
                     alt="Profile"
@@ -197,12 +198,18 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-        <section id="contact" className="py-12 md:py-16  bg-[url(/imgbg.png)] relative z-10 bg-contain sm:bg-auto">
-
-          <div className="container px-4 md:px-6">
+        <section id="contact" className=" bg-[url(/imgbg.png)] relative z-10 bg-contain sm:bg-auto">
+          <svg
+            className="w-full h-[100px] p-0 "
+            viewBox="0 0 1440 100"
+            preserveAspectRatio="none"
+          >
+            <path fill="black" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
+          </svg>
+          <div className="container px-4 md:px-6 py-12 md:py-16 ">
             <div className="flex flex-col items-center gap-4 text-center mb-10">
               <h2 className="text-3xl font-bold tracking-tighter">Entre em contato</h2>
-              <p className="text-muted-foreground md:text-lg max-w-[700px]">
+              <p className="text-purple-300 md:text-lg max-w-[700px]">
 
                 Sinta-se à vontade para entrar em contato conosco se estiver procurando um desenvolvedor, tiver alguma dúvida ou apenas quiser se conectar.
               </p>
@@ -242,7 +249,7 @@ export default function Portfolio() {
           </div>
         </section>
       </main>
-      <footer className=" py-6 md:py-8 bg-black">
+      <footer className=" py-4 md:py-6 bg-black relative z-10">
         <div className="container flex flex-col items-center justify-center gap-4 text-center" onClick={() => setNumbersClicks(numbersClicks + 1)}>
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Cauê de Andrade. Todos os direitos reservados.</p>
         </div>

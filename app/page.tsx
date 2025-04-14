@@ -32,7 +32,7 @@ export default function Portfolio() {
       description: "Cracha de apresentação consumindo dados da api do GitHub",
       tags: ["HTML", "CSS", "JS"],
       image: "/crachaBanner.png",
-      link: "https://projeto-cracha17-08-2022-gvgaypnd3-caue-s-projects.vercel.app/",
+      link: "https://projeto-cracha17-08-2022.vercel.app",
     },
     /* {
       id: 3,

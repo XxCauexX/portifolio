@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Card,
     CardContent,
@@ -13,16 +13,13 @@ import { ArrowLeftIcon, CirclePlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const newProject: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+import { useRouter } from 'next/navigation';
+import { useAuth } from "@/context/AuthContext";
+import { Loader } from 'lucide-react';
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
-        // Add your login logic here
-    };
+const newProject: React.FC = () => {
+    const router = useRouter();
+    const { user } = useAuth();
 
     const projetos = [{
         id: 1,
@@ -56,11 +53,23 @@ const newProject: React.FC = () => {
         link: "#",
     }]
 
-    return (
-        <div className='w-full h-screen '>
-            adicionar projeto
-        </div>
-    );
+    useEffect(() => {
+        if (user === null) {
+            // aguarde o carregamento antes de redirecionar
+            const timer = setTimeout(() => router.push("/login"), 500);
+            return () => clearTimeout(timer);
+        }
+    }, [user]);
+    
+    if (user === undefined || user === null) {
+        return <div className='w-full h-screen flex justify-center items-center'><p>Carregando...</p><Loader className='animate-spin' /></div>
+    } else {
+        return (
+            <div className='w-full h-screen '>
+                adicionar projeto
+            </div>
+        );
+    }
 };
 
 export default newProject;

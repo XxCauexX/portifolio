@@ -1,25 +1,27 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
-const user = { name: 'caue', password: '123456' };
+import { useAuth } from "@/context/AuthContext";
 
 
 const LoginPage: React.FC = () => {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useAuth();
 
-    const handleSubmit = (e: React.FormEvent) => {
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Password:', password);
-        if (password === user.password && email === user.name) {
+        try {
+            await login(email, password);
+            alert("Login realizado com sucesso!");
             router.push('/admin');
-            alert('Login successful!');
-        } else {
-            alert('Invalid password!');
+        } catch (error: any) {
+            alert("Erro ao logar: " + error.message);
         }
-        // Add your login logic here
     };
 
     return (
@@ -42,7 +44,7 @@ const LoginPage: React.FC = () => {
                     Email:
                 </label>
                 <input
-                    type="text"
+                    type="email"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

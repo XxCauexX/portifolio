@@ -2,7 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { Inter } from "next/font/google"
-
+import { AuthProvider } from "@/context/AuthContext";
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
@@ -19,8 +19,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={`${inter.className}`}> {/*   bg-gradient-to-l from-purple-950 to-black */}
         <div className=" bg-[url(/imgbg.png)]  bg-contain sm:bg-auto text-white" >
-
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </div>
         <Analytics />
       </body>

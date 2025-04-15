@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import ParticlesSection from '@/components/ParticlesComponent/ParticlesComponent';
@@ -10,6 +10,16 @@ const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useAuth();
+
+    const { user } = useAuth();
+
+    useEffect(() => {
+        if (user !== null) {
+            // aguarde o carregamento antes de redirecionar
+            const timer = setTimeout(() => router.push("/admin"), 500);
+            return () => clearTimeout(timer);
+        }
+    }, [user]);
 
 
     const handleSubmit = async (e: React.FormEvent) => {

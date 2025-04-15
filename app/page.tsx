@@ -8,11 +8,6 @@ import ProjectCard from "../project-card"
 import { useState, useEffect, useRef } from "react"
 import ParticlesSection from "../components/ParticlesComponent/ParticlesComponent";
 
-const ParticlesComponent = dynamic(
-  () => import('../components/ParticlesComponent/ParticlesComponent'),
-  { ssr: false }
-);
-
 export default function Portfolio() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const router = useRouter();

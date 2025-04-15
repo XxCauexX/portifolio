@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import ParticlesSection from '@/components/ParticlesComponent/ParticlesComponent';
 
 
 const LoginPage: React.FC = () => {
@@ -25,7 +26,15 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }} className=''>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }} className='bg-gradient-to-l from-purple-950 to-black'>
+            <ParticlesSection style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 0 // garante que fique atrás dos outros elementos
+            }} />
             <form
                 onSubmit={handleSubmit}
                 style={{
@@ -37,7 +46,7 @@ const LoginPage: React.FC = () => {
                     borderRadius: '8px',
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                 }}
-                className='  bg-gradient-to-l from-purple-950 to-black'
+                className='bg-[url(/imgbg.png)] bg-contain  relative z-10'
             >
                 <h2 style={{ textAlign: 'center' }}>Login</h2>
                 <label htmlFor="email" style={{ marginBottom: '8px' }}>

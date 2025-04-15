@@ -27,18 +27,25 @@ import { db } from '@/lib/database/firebase';
 const projects: React.FC = () => {
     const router = useRouter();
     const { user } = useAuth();
-    const [projetosApi, setProjetosApi] = useState<{}[]>()
+    const [projetosApi, setProjetosApi] = useState<Projeto[]>()
 
     type Projeto = {
-        id: number,
-        title: string,
-        description: string,
-        tags: [string],
-        image: string,
-        link: string
+        id?: number,
+        title?: string,
+        description?: string,
+        tags?: [string],
+        image?: string,
+        link?: string
+        dados?: {
+            nome: string,
+            description: string,
+            tags: [string],
+            image: string,
+            link: string
+        }
     }
 
-    const projetos: Projeto[] = [{
+    const projetos: Projeto[] = [/*{
         id: 1,
         title: "Wise Advice",
         description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
@@ -52,7 +59,7 @@ const projects: React.FC = () => {
         tags: ["Next.js", "TypeScript", "Prisma"],
         image: "/placeholder.svg?height=300&width=400",
         link: "#",
-    },/*
+    },
     {
         id: 3,
         title: "Weather Dashboard",
@@ -147,7 +154,7 @@ const projects: React.FC = () => {
                         <h1 className='invisible sm:visible sm:ml-4 sm:text-2xl'>Gerenciar Projetos</h1>
                     </div>
                     {
-                        projetos.length > 1 &&
+                        projetosApi && projetosApi.length > 1 &&
                         <Link href={'/admin/projetos/novo'}>
                             <Button className=''><CirclePlusIcon /> Novo projeto</Button>
                         </Link>
@@ -166,10 +173,10 @@ const projects: React.FC = () => {
                                 <CardContent className='text-white grid sm:grid-cols-5  gap-4 items-center justify-items-center'>
                                     <p className='col-span-2'>{projeto?.dados?.description}</p>
                                     <div className='col-span-2 w-3/3 h-[10rem] sm:h-[13rem] border border-purple-600 rounded-3xl overflow-hidden'>
-                                        <img src={projeto?.dados?.image} alt="" className='w-full h-full object-cover transition-transform hover:scale-105 duration-300' />
+                                        <img src={projeto?.dados?.image || '/placeholder.svg'} alt="" className='w-full h-full object-cover transition-transform hover:scale-105 duration-300' />
                                     </div>
                                     <div className='col-span-2 sm:col-span-1 w-full flex justify-evenly'>
-                                        <Link href={projeto?.dados?.link} target='_blank'>
+                                        <Link href={projeto?.dados?.link || '#'} target='_blank'>
                                             <Button className=''><EyeIcon /></Button>
                                         </Link>
                                         <Button className=''><PenIcon /> </Button>

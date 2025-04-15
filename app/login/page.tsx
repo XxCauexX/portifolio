@@ -39,6 +39,7 @@ const LoginPage: React.FC = () => {
                 onSubmit={handleSubmit}
                 style={{
                     display: 'flex',
+                    justifyContent: 'center',
                     flexDirection: 'column',
                     width: '300px',
                     padding: '20px',

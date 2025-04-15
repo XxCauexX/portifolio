@@ -9,7 +9,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-import { FolderOpenIcon, CirclePlusIcon, FilePenLineIcon, SettingsIcon } from 'lucide-react';
+import { FolderOpenIcon, CirclePlusIcon, FilePenLineIcon, SettingsIcon, House } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 import Link from 'next/link';
@@ -31,14 +31,11 @@ const admPainel: React.FC = () => {
     }, [user]);
 
     if (user === undefined || user === null) {
-        return <div className='w-full h-screen flex justify-center items-center'><p>Carregando...</p><Loader className='animate-spin'/></div>
+        return <div className='w-full h-screen flex justify-center items-center'><p>Carregando...</p><Loader className='animate-spin' /></div>
     } else {
         return (
-            <div className=' flex flex-col items-center h-screen'>
-                <div className='py-4 pl-8 text-base bg-black w-full h-max '>
-                    <h1 className='sm:text-2xl'>Painel de Administração</h1>
-                </div>
-                <div className='w-full h-full text-black mt-8 grid grid-cols-1 gap-2 sm:grid-cols-3 grid-r items-center justify-items-center'>
+            <div className='flex flex-col items-center h-screen'>
+                <div className='w-full h-full text-black grid grid-cols-1 gap-2 sm:grid-cols-3  items-center justify-items-center'>
                     <Card className='bg-black shadow-2xl border-none shadow-purple-700 group ' >
                         <CardHeader>
                             <CardTitle className='flex text-white'>

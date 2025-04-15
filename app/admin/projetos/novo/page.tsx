@@ -22,7 +22,7 @@ const newProject: React.FC = () => {
     const router = useRouter();
     const { user } = useAuth();
 
-    const projetos = [{
+   /*  const projetos = [{
         id: 1,
         title: "Wise Advice",
         description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
@@ -52,7 +52,7 @@ const newProject: React.FC = () => {
         tags: ["HTML/CSS", "JavaScript", "Responsive Design"],
         image: "/placeholder.svg?height=300&width=400",
         link: "#",
-    }]
+    }] */
 
     useEffect(() => {
         if (user === null) {

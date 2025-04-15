@@ -8,11 +8,25 @@ import ProjectCard from "../project-card"
 import { useState, useEffect, useRef } from "react"
 import ParticlesSection from "../components/ParticlesComponent/ParticlesComponent";
 
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/lib/database/firebase';
+
+type Projeto = {
+  id?: number,
+  dados?: {
+      nome: string,
+      description: string,
+      tags: [string],
+      image: string,
+      link: string
+  }
+}
 export default function Portfolio() {
+  const [projetosApi, setProjetosApi] = useState<Projeto[]>()
   const sectionRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [numbersClicks, setNumbersClicks] = useState(0)
-  const projects = [
+  const projects = [/*
     {
       id: 1,
       title: "Wise Advice",
@@ -29,7 +43,7 @@ export default function Portfolio() {
       image: "/crachaBanner.png",
       link: "https://projeto-cracha17-08-2022.vercel.app",
     },
-    /* {
+     {
       id: 3,
       title: "Weather Dashboard",
       description: "Real-time weather information with interactive maps and forecasting.",
@@ -48,10 +62,26 @@ export default function Portfolio() {
   ]
 
   useEffect(() => {
+    const getDate = async () => {
+      let dados: {}[] = []
+      const snapshot = await getDocs(collection(db, 'projetos'));
+
+      snapshot.forEach(doc => {
+        dados.push({
+          id: doc.id,
+          dados: doc.data()
+        })
+        console.log(doc.id, doc.data());
+      });
+
+      await setProjetosApi(dados)
+    }
     if (numbersClicks > 5) {
       router.push(`/login`);
       setNumbersClicks(0)
     }
+
+    getDate()
   }, [numbersClicks])
 
   return (
@@ -138,8 +168,8 @@ export default function Portfolio() {
               <p className="text-purple-300 md:text-lg">Alguns dos meus projetos.</p> {/*A  collection of my recent work and personal projects */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+              {projetosApi?.map((project) => (
+                <ProjectCard key={project.id} project={project.dados} />
               ))}
             </div>
           </div>

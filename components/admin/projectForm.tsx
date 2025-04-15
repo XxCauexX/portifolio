@@ -46,6 +46,8 @@ interface ProjectFormProps {
   }
 }
 
+
+
 export function ProjectForm({ project }: ProjectFormProps) {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -87,8 +89,10 @@ export function ProjectForm({ project }: ProjectFormProps) {
         await addDoc(collection(db, 'projetos'), {
             nome: data.title,
             slug: data.slug,
-            descricao: data.description,
-            conteudo: data.content
+            description: data.description,
+            conteudo: data.content,
+            image: data?.thumbnail || '/placeholder.svg',
+            link: data?.link || '#'
           });
         toast({
           title: "Projeto criado",

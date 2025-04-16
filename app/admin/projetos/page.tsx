@@ -145,7 +145,7 @@ const projects: React.FC = () => {
         return <div className='w-full h-screen flex justify-center items-center'><p>Carregando...</p><Loader className='animate-spin' /></div>
     } else {
         return (
-            <div className='w-full h-screen'>
+            <div className='w-full h-full'>
                 <div className='pt-4 grid grid-cols-2 justify-items-center items-center'>
                     <div className='flex w-full justify-center items-center'>
                         <Link href={'/admin'} className='ml-4'>
@@ -161,7 +161,7 @@ const projects: React.FC = () => {
                     }
 
                 </div>
-                <div className=''>
+                <div className=' h-screen'>
                     {
                         projetosApi && projetosApi.length > 0 ? projetosApi?.map((projeto) =>
                             <Card key={projeto.id} className='bg-black m-4'>
@@ -172,7 +172,7 @@ const projects: React.FC = () => {
                                 </CardHeader>
                                 <CardContent className='text-white grid sm:grid-cols-5  gap-4 items-center justify-items-center'>
                                     <p className='col-span-2'>{projeto?.dados?.description}</p>
-                                    <div className='col-span-2 w-3/3 h-[10rem] sm:h-[13rem] border border-purple-600 rounded-3xl overflow-hidden'>
+                                    <div className='col-span-2 w-3/3 h-[10rem] sm:h-[13rem] border border-purple-600 rounded-3xl shadow-lg shadow-purple-700 overflow-hidden'>
                                         <img src={projeto?.dados?.image || '/placeholder.svg'} alt="" className='w-full h-full object-cover transition-transform hover:scale-105 duration-300' />
                                     </div>
                                     <div className='col-span-2 sm:col-span-1 w-full flex justify-evenly'>

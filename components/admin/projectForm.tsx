@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { date, z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -46,13 +46,13 @@ interface ProjectFormProps {
   }
 }
 
-
-
 export function ProjectForm({ project }: ProjectFormProps) {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [thumbnail, setThumbnail] = useState<string | undefined>(project?.thumbnail)
   const [projectImages, setProjectImages] = useState<string[]>(project?.images || [])
+  const [title, setTitle] = useState<string>()
+  const [idImage, setIdImage] = useState<string>()
 
   const form = useForm<ProjectFormValues>({
     resolver: zodResolver(projectSchema),
@@ -70,30 +70,36 @@ export function ProjectForm({ project }: ProjectFormProps) {
   })
 
   const onSubmit = async (data: ProjectFormValues) => {
+    console.log("SubmitForm!!");
+
     setIsSubmitting(true)
 
     try {
       // Include the uploaded images in the form data
       data.thumbnail = thumbnail
-      data.images = projectImages
+      const file = data.thumbnail;
+      /* data.images = projectImages */
 
       if (project) {
         // Update existing project
-        
+
         toast({
           title: "Projeto atualizado",
           description: "O projeto foi atualizado com sucesso.",
         })
       } else {
         // Create new project
+        console.log("Teste ID: ", idImage);
+
         await addDoc(collection(db, 'projetos'), {
-            nome: data.title,
-            slug: data.slug,
-            description: data.description,
-            conteudo: data.content,
-            image: data?.thumbnail || '/placeholder.svg',
-            link: data?.link || '#'
-          });
+          nome: data.title,
+          slug: data.slug,
+          description: data.description,
+          conteudo: data.content,
+          image: data?.thumbnail || '/placeholder.svg',
+          idImage: idImage,
+          link: data?.link || '#'
+        });
         toast({
           title: "Projeto criado",
           description: "O projeto foi criado com sucesso.",
@@ -103,6 +109,9 @@ export function ProjectForm({ project }: ProjectFormProps) {
       router.push("/admin/projetos")
       router.refresh()
     } catch (error) {
+      console.log("Erro");
+      console.log(error);
+
       toast({
         title: "Erro",
         description: "Ocorreu um erro ao salvar o projeto.",
@@ -113,9 +122,15 @@ export function ProjectForm({ project }: ProjectFormProps) {
     }
   }
 
-  const handleThumbnailUpload = (url: string) => {
+  const handleThumbnailUpload = (url: string, id: string) => {
+
+    console.log("Não é array");
+    setIdImage(id)
     setThumbnail(url)
+    console.log(`setIdImage: ${idImage} setThumbnail: ${thumbnail}`);
+
     form.setValue("thumbnail", url)
+
   }
 
   const handleImagesUpload = (url: string) => {
@@ -140,7 +155,7 @@ export function ProjectForm({ project }: ProjectFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="title">Título</Label>
-                  <Input id="title" {...form.register("title")} placeholder="Nome do projeto" />
+                  <Input id="title" {...form.register("title")} placeholder="Nome do projeto" onChange={(e) => setTitle(e.target.value)} />
                   {form.formState.errors.title && (
                     <p className="text-sm text-red-500">{form.formState.errors.title.message}</p>
                   )}
@@ -223,12 +238,13 @@ export function ProjectForm({ project }: ProjectFormProps) {
                 <Label className="block mb-4">Imagem de Capa</Label>
                 <ImageUpload
                   onUpload={handleThumbnailUpload}
+                  title={title}
                   currentImage={thumbnail}
                   label="Adicionar imagem de capa"
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <Label className="block mb-4">Imagens do Projeto</Label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                   {projectImages.map((image, index) => (
@@ -251,13 +267,13 @@ export function ProjectForm({ project }: ProjectFormProps) {
                   ))}
                 </div>
                 <ImageUpload onUpload={handleImagesUpload} label="Adicionar imagem do projeto" />
-              </div>
+              </div> */}
             </div>
           </CardContent>
         </Card>
 
         <div className="flex justify-end gap-4">
-          <Button type="button" variant="outline" onClick={() => router.push("/admin/projects")}>
+          <Button type="button" variant="outline" onClick={() => router.push("/admin/projects")} className="text-black">
             Cancelar
           </Button>
           <Button type="submit" disabled={isSubmitting}>

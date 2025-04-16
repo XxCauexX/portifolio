@@ -36,7 +36,7 @@ const admPainel: React.FC = () => {
         return (
             <div className='flex flex-col items-center h-screen'>
                 <div className='w-full h-full text-black grid grid-cols-1 gap-2 sm:grid-cols-3  items-center justify-items-center'>
-                    <Card className='bg-black shadow-2xl border-none shadow-purple-700 group ' >
+                    <Card className='bg-black border-none shadow-2xl shadow-purple-700 group ' >
                         <CardHeader>
                             <CardTitle className='flex text-white'>
                                 <FolderOpenIcon className='mr-4 group-hover:animate-bounce transition-all duration-300' />

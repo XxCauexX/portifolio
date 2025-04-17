@@ -14,6 +14,7 @@ import { ImageUpload } from "@/components/admin/imageUpload"
 /* import { createProject, updateProject } from "@/lib/actions" */
 import { Loader2, Trash2 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
+import { Toast } from "../ui/toast"
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from "@/lib/database/firebase"
 
@@ -91,15 +92,19 @@ export function ProjectForm({ project }: ProjectFormProps) {
         // Create new project
         console.log("Teste ID: ", idImage);
 
+        const tecnologias = data?.technologies?.split(',')
+
         await addDoc(collection(db, 'projetos'), {
           nome: data.title,
           slug: data.slug,
           description: data.description,
           conteudo: data.content,
+          tags: tecnologias,
           image: data?.thumbnail || '/placeholder.svg',
           idImage: idImage,
           link: data?.link || '#'
         });
+
         toast({
           title: "Projeto criado",
           description: "O projeto foi criado com sucesso.",

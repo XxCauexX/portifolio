@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <>
       <div className=" bg-[url(/imgbg.png)] bg-contain h-max sm:bg-auto text-white" >
-        <div className='flex p-4 items-center text-base bg-black w-full'>
+        <div className='flex p-4 items-center text-base bg-black w-full '>
           <Link href={'/'}>
             <House />
           </Link>

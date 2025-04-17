@@ -14,11 +14,11 @@ import { db } from '@/lib/database/firebase';
 type Projeto = {
   id?: number,
   dados?: {
-      nome: string,
-      description: string,
-      tags: [string],
-      image: string,
-      link: string
+    nome: string,
+    description: string,
+    tags: [string],
+    image: string,
+    link: string
   }
 }
 export default function Portfolio() {
@@ -26,40 +26,6 @@ export default function Portfolio() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [numbersClicks, setNumbersClicks] = useState(0)
-  const projects = [/*
-    {
-      id: 1,
-      title: "Wise Advice",
-      description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
-      tags: ["React"],
-      image: "/image.png",
-      link: "https://projeto-wise-advice.vercel.app/",
-    },
-    {
-      id: 2,
-      title: "Cracha de apresentação",
-      description: "Cracha de apresentação consumindo dados da api do GitHub",
-      tags: ["HTML", "CSS", "JS"],
-      image: "/crachaBanner.png",
-      link: "https://projeto-cracha17-08-2022.vercel.app",
-    },
-     {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Real-time weather information with interactive maps and forecasting.",
-      tags: ["JavaScript", "API Integration", "Chart.js"],
-      image: "/placeholder.svg?height=300&width=400",
-      link: "#",
-    },
-    {
-      id: 4,
-      title: "Portfolio Website",
-      description: "A responsive portfolio website showcasing projects and skills.",
-      tags: ["HTML/CSS", "JavaScript", "Responsive Design"],
-      image: "/placeholder.svg?height=300&width=400",
-      link: "#",
-    }, */
-  ]
 
   useEffect(() => {
     const getDate = async () => {
@@ -71,7 +37,7 @@ export default function Portfolio() {
           id: doc.id,
           dados: doc.data()
         })
-        console.log(doc.id, doc.data());
+       /*  console.log(doc.id, doc.data()); */
       });
 
       await setProjetosApi(dados)

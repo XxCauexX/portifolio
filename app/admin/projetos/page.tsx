@@ -16,7 +16,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Loader } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/database/firebase';
 
 
@@ -30,7 +30,7 @@ const projects: React.FC = () => {
     const [projetosApi, setProjetosApi] = useState<Projeto[]>()
 
     type Projeto = {
-        id?: number,
+        id?: string,
         title?: string,
         description?: string,
         tags?: [string],
@@ -45,77 +45,26 @@ const projects: React.FC = () => {
         }
     }
 
-    const projetos: Projeto[] = [/*{
-        id: 1,
-        title: "Wise Advice",
-        description: "Landing page desenvolvida em React TSX, com foco em apresentar os serviços contábeis exclusivos para médicos e clínicas, além de oferecer um meio de contato direto e profissional. Uma solução moderna e responsiva para estabelecer presença digital e facilitar o primeiro atendimento.",
-        tags: ["React"],
-        image: "/image.png",
-        link: "https://projeto-wise-advice.vercel.app/",
-    }, {
-        id: 2,
-        title: "Task Management App",
-        description: "A productivity application for managing tasks and projects with team collaboration features.",
-        tags: ["Next.js", "TypeScript", "Prisma"],
-        image: "/placeholder.svg?height=300&width=400",
-        link: "#",
-    },
-    {
-        id: 3,
-        title: "Weather Dashboard",
-        description: "Real-time weather information with interactive maps and forecasting.",
-        tags: ["JavaScript", "API Integration", "Chart.js"],
-        image: "/placeholder.svg?height=300&width=400",
-        link: "#",
-        },
-        {
-            id: 4,
-            title: "Weather Dashboard",
-            description: "Real-time weather information with interactive maps and forecasting.",
-            tags: ["JavaScript", "API Integration", "Chart.js"],
-            image: "/placeholder.svg?height=300&width=400",
-            link: "#",
-            },
-            {
-        id: 5,
-        title: "Weather Dashboard",
-        description: "Real-time weather information with interactive maps and forecasting.",
-        tags: ["JavaScript", "API Integration", "Chart.js"],
-        image: "/placeholder.svg?height=300&width=400",
-        link: "#",
-        },
-        {
-            id: 6,
-            title: "Weather Dashboard",
-            description: "Real-time weather information with interactive maps and forecasting.",
-            tags: ["JavaScript", "API Integration", "Chart.js"],
-            image: "/placeholder.svg?height=300&width=400",
-            link: "#",
-            },
-            {
-                id: 7,
-                title: "Weather Dashboard",
-                description: "Real-time weather information with interactive maps and forecasting.",
-                tags: ["JavaScript", "API Integration", "Chart.js"],
-                image: "/placeholder.svg?height=300&width=400",
-                link: "#",
+    async function deleteProject(id: string, imageId: string) {
+        const fileId = imageId;
+        try {
+            const resDeleteImage = await fetch('/api/imageKit/delete', {  /* app\api\imageKit\delete*/
+                method: 'POST',
+                body: JSON.stringify({ fileId }),
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                {
-                    id: 8,
-                    title: "Weather Dashboard",
-                    description: "Real-time weather information with interactive maps and forecasting.",
-                    tags: ["JavaScript", "API Integration", "Chart.js"],
-                    image: "/placeholder.svg?height=300&width=400",
-                    link: "#",
-                    },
-                    {
-                        id: 9,
-                        title: "Portfolio Website",
-                        description: "A responsive portfolio website showcasing projects and skills.",
-                        tags: ["HTML/CSS", "JavaScript", "Responsive Design"],
-                        image: "/placeholder.svg?height=300&width=400",
-                        link: "#",
-                        } */]
+            });
+            console.log(resDeleteImage);
+            if (resDeleteImage.status === 200){
+                const res = await deleteDoc(doc(db, 'projetos', id))
+                alert(res);
+            }
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
 
     useEffect(() => {
         const getDate = async () => {
@@ -125,9 +74,9 @@ const projects: React.FC = () => {
             snapshot.forEach(doc => {
                 dados.push({
                     id: doc.id,
-                    dados: doc.data()
+                    dados: doc.data()   
                 })
-                console.log(doc.id, doc.data());
+                /* console.log(doc.id, doc.data()); */
             });
 
             await setProjetosApi(dados)
@@ -138,14 +87,14 @@ const projects: React.FC = () => {
             return () => clearTimeout(timer);
         }
         getDate()
-    }, [user]);
+    }, [user, projetosApi]);
 
 
     if (user === undefined || user === null) {
         return <div className='w-full h-screen flex justify-center items-center'><p>Carregando...</p><Loader className='animate-spin' /></div>
     } else {
         return (
-            <div className='w-full h-full'>
+            <div className='w-full h-screen'>
                 <div className='pt-4 grid grid-cols-2 justify-items-center items-center'>
                     <div className='flex w-full justify-center items-center'>
                         <Link href={'/admin'} className='ml-4'>
@@ -161,7 +110,7 @@ const projects: React.FC = () => {
                     }
 
                 </div>
-                <div className=' h-screen'>
+                <div className=' h-full p-1'>
                     {
                         projetosApi && projetosApi.length > 0 ? projetosApi?.map((projeto) =>
                             <Card key={projeto.id} className='bg-black m-4'>
@@ -180,7 +129,7 @@ const projects: React.FC = () => {
                                             <Button className=''><EyeIcon /></Button>
                                         </Link>
                                         <Button className=''><PenIcon /> </Button>
-                                        <Button className=''><Trash2Icon className='text-red-600' /> </Button>
+                                        <Button className='' onClick={() => deleteProject(projeto.id)} ><Trash2Icon className='text-red-600' /> </Button>
 
                                     </div>
                                 </CardContent>
